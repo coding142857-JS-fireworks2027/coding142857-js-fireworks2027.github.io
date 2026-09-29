@@ -1,7 +1,14 @@
+let dots = [];
+for (let index = 0; index < 10000; index++) {
+    dots.push(new obj('dot', { pos: { x: Math.random() * 200 - 100, y: Math.random() * 200 - 100, z: 100 } }));
+    dots[index].draw();
+}
+
 function update() {
     resize();
-    let dot1 = obj('dot', { pos: { x: 0, y: 0, z: 100 } });
-    dot1.draw();
+    for (let index = 0; index < 10000; index++) {
+        dots[index].draw();
+    }
     requestAnimationFrame(update);
 }
 
@@ -16,3 +23,22 @@ function resize() {
 }
 
 update();
+
+document.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case 'ArrowUp':
+            dy += 5;
+            break;
+        case 'ArrowDown':
+            dy -= 5;
+            break;
+        case 'ArrowLeft':
+            dx += 5;
+            break;
+        case 'ArrowRight':
+            dx -= 5;
+            break;
+    }
+    console.log(e.key);
+
+})
